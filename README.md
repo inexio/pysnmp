@@ -13,6 +13,11 @@ SNMP engine distributed under 2-clause [BSD license](http://snmplabs.com/pysnmp/
 The PySNMP project was initially sponsored by a [PSF](http://www.python.org/psf/) grant.
 Thank you!
 
+Why this fork?
+--------------
+[Original project](https://github.com/etingof/pysnmp) by [Ilya Etingof](https://github.com/etingof) seems not to be continued anymore.
+Because of that, we try to maintain / enhance SNMP library for Python.
+
 Features
 --------
 
@@ -157,5 +162,7 @@ or try browsing pysnmp
 [mailing list archives](https://sourceforge.net/p/pysnmp/mailman/pysnmp-users/).
 
 Bug reports and PRs are appreciated! ;-)
+
+If you want to contact us, please mail to the [Thola Team](mailto:snmplabs@thola.io)
 
 Copyright (c) 2005-2019, [Ilya Etingof](mailto:etingof@gmail.com). All rights reserved.
