@@ -29,7 +29,7 @@ jobs:
         . ./venv/bin/activate  
         python --version
         pip --version
-        apt-get -y install snmp snmp-mibs-downloader && sudo sed -i 's/mibs :/# mibs :/g' /etc/snmp/snmp.conf
+        sudo apt-get -y install snmp snmp-mibs-downloader && sudo sed -i 's/mibs :/# mibs :/g' /etc/snmp/snmp.conf
         pip install tox
     - name: Test with pytest
       run: |
