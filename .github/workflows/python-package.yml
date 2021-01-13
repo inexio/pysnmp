@@ -33,4 +33,6 @@ jobs:
         pip install tox
     - name: Test with pytest
       run: |
+        export CURRENTPATH=`pwd`
+        export PATH="$PATH:$CURRENTPATH/venv/bin"
         tox
