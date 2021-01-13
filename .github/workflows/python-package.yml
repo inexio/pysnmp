@@ -29,10 +29,9 @@ jobs:
         . ./venv/bin/activate  
         python --version
         pip --version
-        sudo apt-get -y install snmp snmp-mibs-downloader && sudo sed -i 's/mibs :/# mibs :/g' /etc/snmp/snmp.conf
-        pip install tox
-    - name: Test with pytest
+        pip install -e .
+    - name: Test with runtests.sh
       run: |
         export CURRENTPATH=`pwd`
         export PATH="$PATH:$CURRENTPATH/venv/bin"
-        tox
+        ./runtests.sh
