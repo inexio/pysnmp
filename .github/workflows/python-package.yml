@@ -29,6 +29,7 @@ jobs:
         . ./venv/bin/activate  
         python --version
         pip --version
+        pip install -r requirements.txt -r devel-requirements.txt
         pip install -e .
     - name: Test with runtests.sh
       run: |
