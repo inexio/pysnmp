@@ -30,6 +30,7 @@ jobs:
         python --version
         pip --version
         pip install -r requirements.txt -r devel-requirements.txt
+        pip install pysnmp
         pip install -e .
     - name: Test with runtests.sh
       run: |
