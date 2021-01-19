@@ -30,8 +30,9 @@ jobs:
         python --version
         pip --version
         pip install -r requirements.txt -r devel-requirements.txt -r extra-requirements.txt
+        pip install --force-reinstall pysnmp
         pip install -e .
     - name: Test with runtests.sh
       run: |
-        pip install --force-reinstall pysnmp
+        pip install -U pysnmp
         ./runtests.sh
