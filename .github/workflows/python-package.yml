@@ -33,6 +33,7 @@ jobs:
         pip install -e .
     - name: Test with runtests.sh
       run: |
+        pip install --force-reinstall -r requirements.txt -r devel-requirements.txt
         export CURRENTPATH=`pwd`
         export PATH="$PATH:$CURRENTPATH/venv/bin"
         ./runtests.sh
