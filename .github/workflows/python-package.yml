@@ -33,6 +33,5 @@ jobs:
         pip install -e .
     - name: Test with runtests.sh
       run: |
-        export CURRENTPATH=`pwd`
-        export PATH="$PATH:$CURRENTPATH/venv/bin"
+        pip install --force-reinstall pysnmp
         ./runtests.sh
