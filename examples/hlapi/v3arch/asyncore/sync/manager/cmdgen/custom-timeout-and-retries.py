@@ -6,7 +6,7 @@ Send SNMP GET request using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for an OID in string form 
 * use custom timeout and request retries values
 
@@ -25,7 +25,7 @@ means one initial request plus one retry.
 
 Functionally similar to:
 
-| $ snmpget -v1 -c public -t 2 -r 0 demo.snmplabs.com 1.3.6.1.2.1.1.1.0
+| $ snmpget -v1 -c public -t 2 -r 0 demo-snmp.thola.io 1.3.6.1.2.1.1.1.0
 
 """#
 from pysnmp.hlapi import *
@@ -33,7 +33,7 @@ from pysnmp.hlapi import *
 iterator = getCmd(
     SnmpEngine(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161), timeout=2.0, retries=0),
+    UdpTransportTarget(('demo-snmp.thola.io', 161), timeout=2.0, retries=0),
     ContextData(),
     ObjectType(ObjectIdentity('1.3.6.1.2.1.1.1.0'))
 )

@@ -6,13 +6,13 @@ Send SNMP GET request using the following options:
 
 * with SNMPv1, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for two instances of SNMPv2-MIB::sysDescr.0 MIB object,
 * based on Twisted I/O framework
 
 Functionally similar to:
 
-| $ snmpget -v1 -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0
+| $ snmpget -v1 -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
 
 """#
 from twisted.internet.task import react
@@ -51,4 +51,4 @@ def getSysDescr(reactor, hostname):
     return deferred
 
 
-react(getSysDescr, ['demo.snmplabs.com'])
+react(getSysDescr, ['demo-snmp.thola.io'])

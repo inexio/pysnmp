@@ -7,14 +7,14 @@ Send SNMP INFORM notification using the following options:
 * SNMPv3
 * with user 'usr-md5-none', auth: MD5, priv NONE
 * over IPv4/UDP
-* to a Manager at demo.snmplabs.com:162
+* to a Manager at demo-snmp.thola.io:162
 * send INFORM notification
 * with TRAP ID 'warmStart' specified as an OID
 * include managed object information 1.3.6.1.2.1.1.5.0 = 'system name'
 
 Functionally similar to:
 
-| $ snmpinform -v3 -l authNoPriv -u usr-md5-none -A authkey1 demo.snmplabs.com  0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.1.5.0 = 'system name'
+| $ snmpinform -v3 -l authNoPriv -u usr-md5-none -A authkey1 demo-snmp.thola.io  0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.1.5.0 = 'system name'
 
 """#
 from pysnmp.entity import engine, config
@@ -43,7 +43,7 @@ config.addTransport(
 
 config.addTargetAddr(
     snmpEngine, 'my-nms',
-    udp.DOMAIN_NAME, ('104.236.166.95', 162),
+    udp.DOMAIN_NAME, ('135.181.62.68', 162),
     'my-creds',
     tagList='all-my-managers'
 )

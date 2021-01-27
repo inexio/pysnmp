@@ -9,7 +9,7 @@ following options:
   with SNMPv2c, community 'public' and
 * over IPv4/UDP and 
   over IPv6/UDP
-* to an Agent at demo.snmplabs.com:161 and
+* to an Agent at demo-snmp.thola.io:161 and
   to an Agent at [::1]:161
 * pull MIB variables till EOM
 * Enable MIB lookup feature
@@ -22,13 +22,13 @@ from pysnmp.hlapi.v1arch.asyncore import *
 TARGETS = (
     # 1-st target (SNMPv1 over IPv4/UDP)
     (CommunityData('public', mpModel=0),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('1.3.6.1.2.1')),
       ObjectType(ObjectIdentity('1.3.6.1.3.1')))),
 
     # 2-nd target (SNMPv2c over IPv4/UDP)
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('1.3.6.1.4.1')),)),
 
     # 3-th target (SNMPv3 over IPv6/UDP)

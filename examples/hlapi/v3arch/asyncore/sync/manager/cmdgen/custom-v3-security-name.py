@@ -7,7 +7,7 @@ Send SNMP GET request using the following options:
 * with SNMPv3, user 'usr-md5-none', securityName 'myuser'
   MD5 authentication, no privacy
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for an OID in text form
 
 The securityName parameter can be thought as an alias to userName and
@@ -20,7 +20,7 @@ from pysnmp.hlapi import *
 iterator = getCmd(
     SnmpEngine(),
     UsmUserData('usr-md5-none', 'authkey1', securityName='myuser'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('1.3.6.1.2.1.1.1.0'))
 )

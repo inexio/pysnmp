@@ -6,14 +6,14 @@ Send a series of SNMP GETNEXT requests using the following options:
 
 * with SNMPv2c, community name "public"
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs starting from 1.3.6
 * with MIB lookup enabled
 * preload all Python MIB modules found in search path
 
 Functionally similar to:
 
-| $ snmpwalk -v2c -c public -m ALL demo.snmplabs.com:161 1.3.6
+| $ snmpwalk -v2c -c public -m ALL demo-snmp.thola.io:161 1.3.6
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -21,7 +21,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = nextCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ObjectType(ObjectIdentity('1.3.6').loadMibs()),
     lookupMib=True
 )

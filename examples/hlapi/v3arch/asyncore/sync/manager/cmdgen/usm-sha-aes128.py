@@ -6,7 +6,7 @@ Send SNMP GET request using the following options:
 
 * with SNMPv3, user 'usr-sha-aes', SHA authentication, AES128 encryption
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for SNMPv2-MIB::sysDescr.0 MIB object
 
 Available authentication protocols:
@@ -30,7 +30,7 @@ Available privacy protocols:
 
 Functionally similar to:
 
-| $ snmpget -v3 -l authPriv -u usr-sha-aes -A authkey1 -X privkey1 -a SHA -x AES demo.snmplabs.com SNMPv2-MIB::sysDescr.0
+| $ snmpget -v3 -l authPriv -u usr-sha-aes -A authkey1 -X privkey1 -a SHA -x AES demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
 
 """#
 from pysnmp.hlapi import *
@@ -40,7 +40,7 @@ iterator = getCmd(
     UsmUserData('usr-sha-aes', 'authkey1', 'privkey1',
                 authProtocol=USM_AUTH_HMAC96_SHA,
                 privProtocol=USM_PRIV_CFB128_AES),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0))
 )

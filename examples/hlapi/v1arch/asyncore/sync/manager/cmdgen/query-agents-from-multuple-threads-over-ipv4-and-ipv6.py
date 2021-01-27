@@ -9,8 +9,8 @@ Send a bunch of SNMP GET requests simultaneously using the following options:
   with SNMPv2c, community 'public' and
 * over IPv4/UDP and 
   over IPv6/UDP
-* to an Agent at demo.snmplabs.com:161 and
-  to an Agent at demo.snmplabs.com:1161 and
+* to an Agent at demo-snmp.thola.io:161 and
+  to an Agent at demo-snmp.thola.io:1161 and
   to an Agent at [::1]:161
 * for instances of SNMPv2-MIB::sysDescr.0 and
   SNMPv2-MIB::sysLocation.0 MIB objects
@@ -18,9 +18,9 @@ Send a bunch of SNMP GET requests simultaneously using the following options:
 
 Functionally similar to:
 
-| $ snmpget -v1 -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
-| $ snmpget -v2c -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
-| $ snmpget -v2c -c public demo.snmplabs.com:1161 SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
+| $ snmpget -v1 -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
+| $ snmpget -v2c -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
+| $ snmpget -v2c -c public demo-snmp.thola.io:1161 SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
 | $ snmpget -v2c -c public '[::1]' SNMPv2-MIB::sysDescr.0 SNMPv2-MIB::sysLocation.0
 
 """#
@@ -38,13 +38,13 @@ else:
 TARGETS = (
     # 1-st target (SNMPv1 over IPv4/UDP)
     (CommunityData('public', mpModel=0),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 
     # 2-nd target (SNMPv2c over IPv4/UDP)
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 
@@ -58,7 +58,7 @@ TARGETS = (
     # 4-th target (SNMPv2c over IPv4/UDP) - same community and
     # different transport port.
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 1161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 1161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 

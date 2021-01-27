@@ -6,7 +6,7 @@ Send a series of SNMP GETBULK requests using the following options:
 
 * with SNMPv3, user 'usr-none-none', no authentication, no privacy
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs past SNMPv2-MIB::system
 * run till end-of-mib condition is reported by Agent
 * based on asyncio I/O framework
@@ -14,7 +14,7 @@ Send a series of SNMP GETBULK requests using the following options:
 Functionally similar to:
 
 | $ snmpbulkwalk -v3 -lnoAuthNoPriv -u usr-none-none -Cn0 -Cr50 \
-|                demo.snmplabs.com  SNMPv2-MIB::system
+|                demo-snmp.thola.io  SNMPv2-MIB::system
 
 """#
 import asyncio
@@ -30,7 +30,7 @@ def run(varBinds):
         iterator = bulkCmd(
             snmpEngine,
             UsmUserData('usr-none-none'),
-            UdpTransportTarget(('demo.snmplabs.com', 161)),
+            UdpTransportTarget(('demo-snmp.thola.io', 161)),
             ContextData(),
             0, 50,
             *varBinds

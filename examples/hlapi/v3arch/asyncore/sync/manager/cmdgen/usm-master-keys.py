@@ -7,7 +7,7 @@ Send SNMP GET request using the following options:
 * with SNMPv3, user 'usr-md5-des', MD5 authentication, DES encryption
 * use master auth and privacy keys instead of pass-phrase
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for SNMPv2-MIB::sysDescr.0 MIB object instance
 
 Functionally similar to:
@@ -16,7 +16,7 @@ Functionally similar to:
       -u usr-md5-des \
       -3m 0x1dcf59e86553b3afa5d32fd5d61bf0cf \
       -3M 0xec5ab55e93e1d85cb6846d0f23e845e0 \
-      demo.snmplabs.com SNMPv2-MIB::sysDescr.0
+      demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
 
 """#
 from pysnmp.hlapi import *
@@ -31,7 +31,7 @@ iterator = getCmd(
             hexValue='ec5ab55e93e1d85cb6846d0f23e845e0'),
         authKeyType=usmKeyTypeMaster,
         privKeyType=usmKeyTypeMaster),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0))
 )

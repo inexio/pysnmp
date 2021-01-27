@@ -6,13 +6,13 @@ Send a series of SNMP GETNEXT requests using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs in IF-MIB
 * with MIB lookup enabled
 
 Functionally similar to:
 
-| $ snmpwalk -v2c -c public demo.snmplabs.com  IF-MIB::
+| $ snmpwalk -v2c -c public demo-snmp.thola.io  IF-MIB::
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -20,7 +20,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = nextCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ObjectType(ObjectIdentity('IF-MIB'))
 )
 

@@ -6,14 +6,14 @@ Send SNMP GET request using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for IF-MIB::ifInOctets.1 MIB object
 * pass non-default ASN.1 MIB source to MIB compiler
 * with MIB lookup enabled
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public -M /usr/share/snmp demo.snmplabs.com IF-MIB::ifInOctets.1
+| $ snmpget -v2c -c public -M /usr/share/snmp demo-snmp.thola.io IF-MIB::ifInOctets.1
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -21,7 +21,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = getCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ObjectType(ObjectIdentity('IF-MIB', 'ifInOctets', 1).addAsn1MibSource(
         'file:///usr/share/snmp',
         'http://mibs.snmplabs.com/asn1/@mib@')

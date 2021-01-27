@@ -6,7 +6,7 @@ Send a series of SNMP GETBULK requests using the following options:
 
 * with SNMPv2c, community name "public"
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs past SNMPv2-MIB::system
 * with MIB lookup enabled
 * run till end-of-mib condition is reported by Agent OR 
@@ -14,7 +14,7 @@ Send a series of SNMP GETBULK requests using the following options:
 
 Functionally similar to:
 
-| $ snmpbulkwalk -v2c -c public -Cn0 -Cr50 demo.snmplabs.com SNMPv2-MIB::system
+| $ snmpbulkwalk -v2c -c public -Cn0 -Cr50 demo-snmp.thola.io SNMPv2-MIB::system
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -22,7 +22,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = bulkCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     0, 50,
     ObjectType(ObjectIdentity('SNMPv2-MIB', 'system')),
     lookupMib=True,

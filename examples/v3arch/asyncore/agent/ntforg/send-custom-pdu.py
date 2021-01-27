@@ -15,7 +15,7 @@ framework for further treatment.
 
 Functionally similar to:
 
-| $ snmptrap -v2c -c public demo.snmplabs.com 0 1.3.6.1.6.3.1.1.5.1
+| $ snmptrap -v2c -c public demo-snmp.thola.io 0 1.3.6.1.6.3.1.1.5.1
 
 """#
 from pysnmp.entity import engine, config
@@ -43,7 +43,7 @@ config.addTransport(
 # Create named target
 config.addTargetAddr(
     snmpEngine, 'my-nms',
-    udp.DOMAIN_NAME, ('104.236.166.95', 162),
+    udp.DOMAIN_NAME, ('135.181.62.68', 162),
     'my-creds'
 )
 

@@ -8,13 +8,13 @@ Send SNMP TRAP notification using the following options:
 * with user 'usr-md5-des', auth: MD5, priv DES
 * over IPv4/UDP
 * send TRAP notification
-* to a Manager at 104.236.166.95:162
+* to a Manager at 135.181.62.68:162
 * with TRAP ID 'warmStart' specified as an OID
 * include managed object information 1.3.6.1.2.1.1.5.0 = 'system name'
 
 Functionally similar to:
 
-| $ snmptrap -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 -e 8000000001020304 demo.snmplabs.com 0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmptrap -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 -e 8000000001020304 demo-snmp.thola.io 0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.1.1.0 s "my system"
 
 """#
 from pysnmp.entity import engine, config
@@ -48,7 +48,7 @@ config.addTransport(
 
 config.addTargetAddr(
     snmpEngine, 'my-nms',
-    udp.DOMAIN_NAME, ('104.236.166.95', 162),
+    udp.DOMAIN_NAME, ('135.181.62.68', 162),
     'my-creds',
     tagList='all-my-managers'
 )

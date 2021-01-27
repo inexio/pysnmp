@@ -6,13 +6,13 @@ Send SNMP GET request using the following options:
 
 * with SNMPv3, user 'usr-none-none', no authentication, no privacy
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for IF-MIB::ifInOctets.1 and IF-MIB::ifOutOctets.1 MIB object
 * perform response OIDs and values resolution at MIB
 
 Functionally similar to:
 
-| $ snmpget -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 demo.snmplabs.com IF-MIB::ifInOctets.1 IF-MIB::ifOutOctets.1
+| $ snmpget -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 demo-snmp.thola.io IF-MIB::ifInOctets.1 IF-MIB::ifOutOctets.1
 
 """#
 from pysnmp.hlapi import *
@@ -20,7 +20,7 @@ from pysnmp.hlapi import *
 iterator = getCmd(
     SnmpEngine(),
     UsmUserData('usr-none-none'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('IF-MIB', 'ifInOctets', 1)),
     ObjectType(ObjectIdentity('IF-MIB', 'ifOutOctets', 1))

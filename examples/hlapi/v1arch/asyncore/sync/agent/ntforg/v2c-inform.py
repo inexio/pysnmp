@@ -13,7 +13,7 @@ Send SNMP INFORM notification using the following options:
 
 Functionally similar to:
 
-| $ snmpinform -v2c -c public demo.snmplabs.com 12345 1.3.6.1.4.1.20408.4.1.1.2 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmpinform -v2c -c public demo-snmp.thola.io 12345 1.3.6.1.4.1.20408.4.1.1.2 1.3.6.1.2.1.1.1.0 s "my system"
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -21,7 +21,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = sendNotification(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 162)),
+    UdpTransportTarget(('demo-snmp.thola.io', 162)),
     'inform',
     # SNMPv2-MIB::sysUpTime.0 = 12345
     ('1.3.6.1.2.1.1.3.0', TimeTicks(12345)),

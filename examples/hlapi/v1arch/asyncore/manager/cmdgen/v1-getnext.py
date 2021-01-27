@@ -6,12 +6,12 @@ Send a series of SNMP GETNEXT requests using the following options:
 
   * with SNMPv1, community 'public'
   * over IPv4/UDP
-  * to an Agent at demo.snmplabs.com:161
+  * to an Agent at demo-snmp.thola.io:161
   * for the 1.3.6.1.2.1.1 OID (e.g. SNMPv2-MIB::system MIB branch)
 
 Functionally similar to:
 
-| $ snmpwalk -v1 -c public demo.snmplabs.com 1.3.6.1.2.1.1
+| $ snmpwalk -v1 -c public demo-snmp.thola.io 1.3.6.1.2.1.1
 
 """#
 
@@ -41,7 +41,7 @@ snmpDispatcher = SnmpDispatcher()
 stateHandle = nextCmd(
     snmpDispatcher,
     CommunityData('public', mpModel=0),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ('1.3.6.1.5.1.1', None),
     cbFun=cbFun
 )

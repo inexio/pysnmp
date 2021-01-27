@@ -17,7 +17,7 @@ the ContextName being used.
 
 Functionally similar to:
 
-| $ snmpinform -v3 -l authNoPriv -u usr-md5-none -A authkey1 -n my-context demo.snmplabs.com 12345 0.3.6.1.6.3.1.1.5.2
+| $ snmpinform -v3 -l authNoPriv -u usr-md5-none -A authkey1 -n my-context demo-snmp.thola.io 12345 0.3.6.1.6.3.1.1.5.2
 
 """#
 from pysnmp.hlapi import *
@@ -25,7 +25,7 @@ from pysnmp.hlapi import *
 iterator = sendNotification(
     SnmpEngine(),
     UsmUserData('usr-md5-none', 'authkey1'),
-    UdpTransportTarget(('demo.snmplabs.com', 162)),
+    UdpTransportTarget(('demo-snmp.thola.io', 162)),
     ContextData(contextName='my-context'),
     'inform',
     NotificationType(ObjectIdentity('1.3.6.1.6.3.1.1.5.2')).loadMibs('SNMPv2-MIB')

@@ -18,8 +18,8 @@ what leads to excessive tables information.
 
 Functionally similar to:
 
-| $ snmptrap -v2c -c public demo.snmplabs.com 12345 1.3.6.1.6.3.1.1.5.2
-| $ snmpinform -v2c -c public demo.snmplabs.com 12345 1.3.6.1.6.3.1.1.5.2
+| $ snmptrap -v2c -c public demo-snmp.thola.io 12345 1.3.6.1.6.3.1.1.5.2
+| $ snmpinform -v2c -c public demo-snmp.thola.io 12345 1.3.6.1.6.3.1.1.5.2
 
 """#
 from twisted.internet.defer import DeferredList
@@ -77,5 +77,5 @@ def sendall(reactor, destinations):
     )
 
 
-react(sendall, [[('demo.snmplabs.com', 'trap'),
-                 ('demo.snmplabs.com', 'inform')]])
+react(sendall, [[('demo-snmp.thola.io', 'trap'),
+                 ('demo-snmp.thola.io', 'inform')]])

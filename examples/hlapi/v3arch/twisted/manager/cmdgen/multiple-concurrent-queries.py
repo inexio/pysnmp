@@ -6,15 +6,15 @@ Send multiple SNMP GET requests at once using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for two instances of SNMPv2-MIB::sysDescr.0 and SNMPv2-MIB::sysLocation.0
   MIB object,
 * based on Twisted I/O framework
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0
-| $ snmpget -v2c -c public demo.snmplabs.com SNMPv2-MIB::sysLocation.0
+| $ snmpget -v2c -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
+| $ snmpget -v2c -c public demo-snmp.thola.io SNMPv2-MIB::sysLocation.0
 
 """#
 from twisted.internet.defer import DeferredList
@@ -62,4 +62,4 @@ def getSystem(reactor, hostname):
     )
 
 
-react(getSystem, ['demo.snmplabs.com'])
+react(getSystem, ['demo-snmp.thola.io'])

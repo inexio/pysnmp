@@ -6,7 +6,7 @@ Send a series of SNMP GETBULK requests using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs within TCP-MIB::tcpConnTable column
 * TCP-MIB Python module will be searched by a user-specified filesystem
   path (/opt/mib/pysnmp) and in Python package (python_packaged_mibs)
@@ -16,7 +16,7 @@ Send a series of SNMP GETBULK requests using the following options:
 
 Functionally similar to:
 
-| $ snmpbulkwalk -v2c -c public -Cn0 -Cr50 demo.snmplabs.com TCP-MIB::tcpConnTable
+| $ snmpbulkwalk -v2c -c public -Cn0 -Cr50 demo-snmp.thola.io TCP-MIB::tcpConnTable
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -24,13 +24,13 @@ from pysnmp.hlapi.v1arch import *
 iterator = bulkCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     0, 50,
     ObjectType(
       ObjectIdentity('TCP-MIB', 'tcpConnTable').addMibSource(
           '/opt/mibs/pysnmp').addMibSource(
           'python_packaged_mibs')
-    ).addAsn1MibSource('http://mibs.snmplabs.com/asn1/@mib@'),
+    ).addAsn1MibSource('http://mibs.thola.io/asn1/@mib@'),
     lookupMib=True,
     lexicographicMode=False
 )

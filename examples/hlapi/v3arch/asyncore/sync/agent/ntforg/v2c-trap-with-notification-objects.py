@@ -15,7 +15,7 @@ in *NOTIFICATION-TYPE* SMI macro.
 
 Functionally similar to:
 
-| $ snmptrap -v2c -c public demo.snmplabs.com 0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.2.2.1.1.123 i 123 1.3.6.1.2.1.2.2.1.7.123 i 1 1.3.6.1.2.1.2.2.1.8.123 i 1
+| $ snmptrap -v2c -c public demo-snmp.thola.io 0 1.3.6.1.6.3.1.1.5.1 1.3.6.1.2.1.2.2.1.1.123 i 123 1.3.6.1.2.1.2.2.1.7.123 i 1 1.3.6.1.2.1.2.2.1.8.123 i 1
 
 """#
 from pysnmp.hlapi import *
@@ -23,7 +23,7 @@ from pysnmp.hlapi import *
 iterator = sendNotification(
     SnmpEngine(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 162)),
+    UdpTransportTarget(('demo-snmp.thola.io', 162)),
     ContextData(),
     'trap',
     NotificationType(

@@ -6,13 +6,13 @@ Send a series of SNMP GETNEXT requests using the following options:
 
 * with SNMPv3, user 'usr-md5-none', MD5 authentication, no privacy
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs in IF-MIB
 * based on Twisted I/O framework
 
 Functionally similar to:
 
-| $ snmpwalk -v3 -lauthPriv -u usr-md5-none -A authkey1 -X privkey1 demo.snmplabs.com  IF-MIB::
+| $ snmpwalk -v3 -lauthPriv -u usr-md5-none -A authkey1 -X privkey1 demo-snmp.thola.io  IF-MIB::
 
 """#
 from twisted.internet.task import react
@@ -44,7 +44,7 @@ def getnext(reactor, snmpEngine, varBinds):
     deferred = nextCmd(
         snmpEngine,
         UsmUserData('usr-md5-none', 'authkey1'),
-        UdpTransportTarget(('demo.snmplabs.com', 161)),
+        UdpTransportTarget(('demo-snmp.thola.io', 161)),
         ContextData(),
         varBinds
     )

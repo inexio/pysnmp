@@ -19,7 +19,7 @@ Original v1 TRAP fields are mapped into dedicated variable-bindings,
 
 Functionally similar to:
 
-| $ snmptrap -v1 -c public demo.snmplabs.com 1.3.6.1.4.1.20408.4.1.1.2 127.0.0.1 6 432 12345 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmptrap -v1 -c public demo-snmp.thola.io 1.3.6.1.4.1.20408.4.1.1.2 127.0.0.1 6 432 12345 1.3.6.1.2.1.1.1.0 s "my system"
 
 """#
 from pysnmp.hlapi import *
@@ -27,7 +27,7 @@ from pysnmp.hlapi import *
 iterator = sendNotification(
     SnmpEngine(),
     CommunityData('public', mpModel=0),
-    UdpTransportTarget(('demo.snmplabs.com', 162)),
+    UdpTransportTarget(('demo-snmp.thola.io', 162)),
     ContextData(),
     'trap',
     NotificationType(

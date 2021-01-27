@@ -6,12 +6,12 @@ Send SNMP SET request using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * setting SNMPv2-MIB::sysName.0 to new value (type taken from MIB)
 
 Functionally similar to:
 
-| $ snmpset -v2c -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0 = "new system name"
+| $ snmpset -v2c -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0 = "new system name"
 
 """#
 from pysnmp.hlapi import *
@@ -19,7 +19,7 @@ from pysnmp.hlapi import *
 iterator = setCmd(
     SnmpEngine(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(
         ObjectIdentity('SNMPv2-MIB', 'sysORDescr', 1),

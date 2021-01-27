@@ -18,7 +18,7 @@ using the following options:
 
 Functionally similar to:
 
-| $ snmptrap -v1 -c public demo.snmplabs.com 1.3.6.1.4.1.20408.4.1.1.2 0.0.0.0 1 0 0 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmptrap -v1 -c public demo-snmp.thola.io 1.3.6.1.4.1.20408.4.1.1.2 0.0.0.0 1 0 0 1.3.6.1.2.1.1.1.0 s "my system"
 
 """#
 import trollius
@@ -32,7 +32,7 @@ def run():
     iterator = sendNotification(
         snmpEngine,
         CommunityData('public'),  # mpModel=0),
-        UdpTransportTarget(('demo.snmplabs.com', 162)),
+        UdpTransportTarget(('demo-snmp.thola.io', 162)),
         ContextData(),
         'inform',
         NotificationType(

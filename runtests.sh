@@ -29,7 +29,9 @@ do
         continue
         ;;
     *)
-        $PYTHON "${x}" | tail -50
+        COMMAND="$PYTHON "${x}" | tail -50"
+        echo $COMMAND
+        eval $COMMAND
         ;;
     esac
 done
