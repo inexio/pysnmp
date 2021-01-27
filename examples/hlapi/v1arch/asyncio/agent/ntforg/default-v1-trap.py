@@ -33,7 +33,7 @@ def run():
     iterator = sendNotification(
         snmpDispatcher,
         CommunityData('public', mpModel=0),
-        UdpTransportTarget(('demo.snmplabs.com', 162)),
+        UdpTransportTarget(('demo-snmp.thola.io', 162)),
         'trap',
         NotificationType(
             ObjectIdentity('1.3.6.1.6.3.1.1.5.2')
