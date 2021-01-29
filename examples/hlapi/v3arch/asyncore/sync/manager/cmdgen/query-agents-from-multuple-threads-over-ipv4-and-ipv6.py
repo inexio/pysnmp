@@ -10,7 +10,7 @@ Send a bunch of SNMP GET requests simultaneously using the following options:
   with SNMPv3, user 'usr-md5-des', MD5 auth and DES privacy
 * over IPv4/UDP and 
   over IPv6/UDP
-* to an Agent at demo.snmplabs.com:161 and
+* to an Agent at demo-snmp.thola.io:161 and
   to an Agent at [::1]:161
 * for instances of SNMPv2-MIB::sysDescr.0 and
   SNMPv2-MIB::sysLocation.0 MIB objects
@@ -30,13 +30,13 @@ else:
 TARGETS = (
     # 1-st target (SNMPv1 over IPv4/UDP)
     (CommunityData('public', mpModel=0),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 
     # 2-nd target (SNMPv2c over IPv4/UDP)
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 
@@ -49,7 +49,7 @@ TARGETS = (
 
     # 4-nd target (SNMPv3 over IPv4/UDP)
     (UsmUserData('usr-md5-des', 'authkey1', 'privkey1'),
-     UdpTransportTarget(('demo.snmplabs.com', 161)),
+     UdpTransportTarget(('demo-snmp.thola.io', 161)),
      (ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0)),
       ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysLocation', 0)))),
 

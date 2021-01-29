@@ -6,12 +6,12 @@ Send SNMP GET request using the following options:
 
   * with SNMPv2c, community 'public'
   * over IPv4/UDP
-  * to an Agent at demo.snmplabs.com:161
+  * to an Agent at demo-snmp.thola.io:161
   * for the 1.3.6.1.2.1.1.1.0 OID (e.g. SNMPv2-MIB::sysDescr.0 MIB object)
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com 1.3.6.1.2.1.1.1.0
+| $ snmpget -v2c -c public demo-snmp.thola.io 1.3.6.1.2.1.1.1.0
 
 """#
 
@@ -36,7 +36,7 @@ snmpDispatcher = SnmpDispatcher()
 stateHandle = getCmd(
     snmpDispatcher,
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ('1.3.6.1.2.1.1.1.0', None),
     cbFun=cbFun
 )

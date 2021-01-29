@@ -13,8 +13,8 @@ Send multiple SNMP notifications at once using the following options:
 
 Functionally similar to:
 
-| $ snmptrap -v2c -c public demo.snmplabs.com 12345 1.3.6.1.6.3.1.1.5.2
-| $ snmpinform -v2c -c public demo.snmplabs.com 12345 1.3.6.1.6.3.1.1.5.2
+| $ snmptrap -v2c -c public demo.snmp.thola.io 12345 1.3.6.1.6.3.1.1.5.2
+| $ snmpinform -v2c -c public demo-snmp.thola.io 12345 1.3.6.1.6.3.1.1.5.2
 
 """#
 import asyncio
@@ -54,7 +54,7 @@ snmpEngine = SnmpEngine()
 loop = asyncio.get_event_loop()
 loop.run_until_complete(
     asyncio.wait(
-        [sendone(snmpEngine, 'demo.snmplabs.com', 'trap'),
-         sendone(snmpEngine, 'demo.snmplabs.com', 'inform')]
+        [sendone(snmpEngine, 'demo-snmp.thola.io', 'trap'),
+         sendone(snmpEngine, 'demo-snmp.thola.io', 'inform')]
     )
 )

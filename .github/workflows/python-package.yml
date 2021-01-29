@@ -35,5 +35,6 @@ jobs:
     - name: Test with runtests.sh
       run: |
         pip install -U pysnmp
+        pip install -U pysnmp-mibs
         pip install --force-reinstall pysnmp-mibs
         ./runtests.sh

@@ -14,7 +14,7 @@ using the following options:
 
 Functionally similar to:
 
-| $ snmptrap -v2c -c public demo.snmplabs.com 12345 1.3.6.1.6.3.1.1.5.2 1.3.6.1.2.1.1.1.0 s "Hello from Twisted"
+| $ snmptrap -v2c -c public demo-snmp.thola.io 12345 1.3.6.1.6.3.1.1.5.2 1.3.6.1.2.1.1.1.0 s "Hello from Twisted"
 
 """#
 from twisted.internet.task import react, defer
@@ -45,4 +45,4 @@ def sendtrap(reactor, snmpEngine, hostname):
 # Preserve SnmpEngine instance across [potentially] multiple calls to safe on initialization
 snmpEngine = SnmpEngine()
 
-react(sendtrap, [snmpEngine, 'demo.snmplabs.com'])
+react(sendtrap, [snmpEngine, 'demo-snmp.thola.io'])

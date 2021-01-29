@@ -6,13 +6,13 @@ Send SNMP GET request using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for TCP-MIB::tcpConnLocalAddress."0.0.0.0".22."0.0.0.0".0 MIB object
 * with MIB lookup enabled
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com TCP-MIB::tcpConnLocalAddress."0.0.0.0".22."0.0.0.0".0
+| $ snmpget -v2c -c public demo-snmp.thola.io TCP-MIB::tcpConnLocalAddress."0.0.0.0".22."0.0.0.0".0
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -20,7 +20,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = getCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ObjectType(
         ObjectIdentity(
             'TCP-MIB',
@@ -28,7 +28,7 @@ iterator = getCmd(
             '0.0.0.0', 22,
             '0.0.0.0', 0
         )
-    ).addAsn1MibSource('http://mibs.snmplabs.com/asn1/@mib@'),
+    ).addAsn1MibSource('http://mibs.thola.io/asn1/@mib@'),
     lookupMib=True
 )
 

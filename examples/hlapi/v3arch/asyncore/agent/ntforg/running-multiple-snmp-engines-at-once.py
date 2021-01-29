@@ -25,8 +25,8 @@ data packet should be handed over. The selection criteria we
 employ here is based on peer's UDP port number. Other selection
 criterias are also possible.
 
-| $ snmpinform -v2c -c public demo.snmplabs.com:1162 123 1.3.6.1.6.3.1.1.5.1
-| $ snmpinform -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 demo.snmplabs.com 123 1.3.6.1.6.3.1.1.5.1
+| $ snmpinform -v2c -c public demo-snmp.thola.io:1162 123 1.3.6.1.6.3.1.1.5.1
+| $ snmpinform -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 demo-snmp.thola.io 123 1.3.6.1.6.3.1.1.5.1
 
 """#
 from pysnmp.hlapi.v3arch.asyncore import *
@@ -37,12 +37,12 @@ from pysnmp.carrier.asyncore.dispatch import AsyncoreDispatcher
 TARGETS = (
     # 1-st target (SNMPv2c over IPv4/UDP)
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 1162)),
+     UdpTransportTarget(('demo-snmp.thola.io', 1162)),
      ContextData()),
 
     # 2-nd target (SNMPv3 over IPv4/UDP)
     (UsmUserData('usr-md5-des', 'authkey1', 'privkey1'),
-     UdpTransportTarget(('demo.snmplabs.com', 162)),
+     UdpTransportTarget(('demo-snmp.thola.io', 162)),
      ContextData()),
 )
 

@@ -5,12 +5,12 @@ Set scalar value
 Send a SNMP SET request
 * with SNMPv2c with community name 'private'
 * over IPv4/UDP
-* to an Agent at 104.236.166.95:161
+* to an Agent at 135.181.62.68:161
 * for an OID in tuple form and an integer-typed value
 
 This script performs similar to the following Net-SNMP command:
 
-| $ snmpset -v2c -c private -ObentU 104.236.166.95:161 1.3.6.1.2.1.1.9.1.4.1 t 123
+| $ snmpset -v2c -c private -ObentU 135.181.62.68:161 1.3.6.1.2.1.1.9.1.4.1 t 123
 
 """#
 from pysnmp.entity import engine, config
@@ -26,7 +26,7 @@ snmpEngine = engine.SnmpEngine()
 #
 
 # SecurityName <-> CommunityName mapping
-config.addV1System(snmpEngine, 'my-area', 'private')
+config.addV1System(snmpEngine, 'my-area', 'public')
 
 # Specify security settings per SecurityName (SNMPv1 - 0, SNMPv2c - 1)
 config.addTargetParams(snmpEngine, 'my-creds', 'my-area', 'noAuthNoPriv', 1)
@@ -45,7 +45,7 @@ config.addTransport(
 
 config.addTargetAddr(
     snmpEngine, 'my-router',
-    udp.DOMAIN_NAME, ('104.236.166.95', 161),
+    udp.DOMAIN_NAME, ('135.181.62.68', 161),
     'my-creds'
 )
 

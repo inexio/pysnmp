@@ -1,3 +1,4 @@
 pysmi
+pysnmp-mibs
 pyasn1>=0.2.3
 ordereddict; python_version < '2.7'

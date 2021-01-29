@@ -13,7 +13,7 @@ Send SNMP INFORM notification using the following options:
 
 Functionally similar to:
 
-| $ snmpinform -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 demo.snmplabs.com 12345 1.3.6.1.4.1.20408.4.1.1.2 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmpinform -v3 -l authPriv -u usr-md5-des -A authkey1 -X privkey1 demo-snmp.thola.io 12345 1.3.6.1.4.1.20408.4.1.1.2 1.3.6.1.2.1.1.1.0 s "my system"
 
 """#
 from pysnmp.hlapi import *
@@ -21,7 +21,7 @@ from pysnmp.hlapi import *
 iterator = sendNotification(
     SnmpEngine(),
     UsmUserData('usr-md5-des', 'authkey1', 'privkey1'),
-    UdpTransportTarget(('demo.snmplabs.com', 162)),
+    UdpTransportTarget(('demo-snmp.thola.io', 162)),
     ContextData(),
     'inform',
     NotificationType(

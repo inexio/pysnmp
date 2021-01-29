@@ -4,15 +4,15 @@ Walk multiple Agents at once
 
 * with SNMPv3 with user 'usr-md5-none', MD5 auth and no privacy protocols
 * over IPv4/UDP
-* to Agents at demo.snmplabs.com:161 and demo.snmplabs.com:1161 
+* to Agents at demo-snmp.thola.io:161 and demo-snmp.thola.io:1161 
 * for multiple MIB subtrees and tables
 * for whole MIB
 * based on Twisted I/O framework
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com:161 SNMPv2-MIB::system
-| $ snmpget -v2c -c public demo.snmplabs.comL1161 SNMPv2-MIB::system
+| $ snmpget -v2c -c public demo-snmp.thola.io:161 SNMPv2-MIB::system
+| $ snmpget -v2c -c public demo-snmp.thola.ioL1161 SNMPv2-MIB::system
 
 """#
 from twisted.internet.defer import DeferredList
@@ -67,4 +67,4 @@ def getall(reactor, hostnames):
     )
 
 
-react(getall, [(('demo.snmplabs.com', 161), ('demo.snmplabs.com', 1161))])
+react(getall, [(('demo-snmp.thola.io', 161), ('demo-snmp.thola.io', 1161))])

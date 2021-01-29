@@ -8,7 +8,7 @@ Send SNMP GET request using the following scenario and options:
 
 * a non-existing user
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 
 * if remote SNMP Engine ID is discovered, send SNMP GET request:
 
@@ -22,7 +22,7 @@ from pysnmp.hlapi import *
 
 snmpEngine = SnmpEngine()
 
-transportTarget = UdpTransportTarget(('demo.snmplabs.com', 161))
+transportTarget = UdpTransportTarget(('demo-snmp.thola.io', 161))
 
 #
 # To discover remote SNMP EngineID we will tap on SNMP engine inner workings

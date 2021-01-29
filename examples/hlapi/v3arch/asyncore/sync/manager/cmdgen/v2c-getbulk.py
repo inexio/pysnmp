@@ -6,14 +6,14 @@ Send a series of SNMP GETBULK requests using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * with values non-repeaters = 0, max-repetitions = 25
 * for two OIDs in string form
 * stop when response OIDs leave the scopes of initial OIDs
 
 Functionally similar to:
 
-| $ snmpbulkwalk -v2c -c public demo.snmplabs.com -Cn0 -Cr25 1.3.6.1.2.1.2.2 1.3.6.1.2.1.2.3
+| $ snmpbulkwalk -v2c -c public demo-snmp.thola.io -Cn0 -Cr25 1.3.6.1.2.1.2.2 1.3.6.1.2.1.2.3
 
 """#
 from pysnmp.hlapi import *
@@ -21,7 +21,7 @@ from pysnmp.hlapi import *
 iterator = bulkCmd(
     SnmpEngine(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     0, 25,
     ObjectType(ObjectIdentity('1.3.6.1.2.1.2.2')),

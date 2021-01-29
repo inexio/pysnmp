@@ -13,8 +13,8 @@ wait for responses asynchronously:
 * with TRAP ID 'coldStart' specified as a MIB symbol
 * include managed object information specified as var-bind objects pair
 
-| $ snmptrap -v1 -c public demo.snmplabs.com 1.3.6.1.4.1.20408.4.1.1.2 demo.snmplabs.com 6 432 12345 1.3.6.1.2.1.1.1.0 s "my system"
-| $ snmptrap -v2c -c public demo.snmplabs.com 123 1.3.6.1.6.3.1.1.5.1
+| $ snmptrap -v1 -c public demo-snmo.thola.io 1.3.6.1.4.1.20408.4.1.1.2 demo-snmp.thola.io 6 432 12345 1.3.6.1.2.1.1.1.0 s "my system"
+| $ snmptrap -v2c -c public demo-snmp.thola.io 123 1.3.6.1.6.3.1.1.5.1
 
 """#
 from pysnmp.hlapi.v3arch.asyncore import *
@@ -24,12 +24,12 @@ from pysnmp.hlapi.v3arch.asyncore import *
 TARGETS = (
     # 1-st target (SNMPv1 over IPv4/UDP)
     (CommunityData('public', mpModel=0),
-     UdpTransportTarget(('demo.snmplabs.com', 162)),
+     UdpTransportTarget(('demo-snmp.thola.io', 162)),
      ContextData()),
 
     # 2-nd target (SNMPv2c over IPv4/UDP)
     (CommunityData('public'),
-     UdpTransportTarget(('demo.snmplabs.com', 162)),
+     UdpTransportTarget(('demo-snmp.thola.io', 162)),
      ContextData()),
 )
 

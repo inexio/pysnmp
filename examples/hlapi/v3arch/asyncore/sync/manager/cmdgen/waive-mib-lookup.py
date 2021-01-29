@@ -6,7 +6,7 @@ Perform SNMP GETNEXT operation with the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for an OID in string form
 * do not resolve request/response OIDs and values from/toto human-friendly form
 
@@ -15,7 +15,7 @@ request and response variable-bindings from/to human-friendly form.
 
 Functionally similar to:
 
-| $ snmpwalk -v2c -c public -ObentU demo.snmplabs.com 1.3.6.1.2.1
+| $ snmpwalk -v2c -c public -ObentU demo-snmp.thola.io 1.3.6.1.2.1
 
 """#
 from pysnmp.hlapi import *
@@ -23,7 +23,7 @@ from pysnmp.hlapi import *
 iterator = nextCmd(
     SnmpEngine(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('1.3.6.1.2.1.1')),
     lookupMib=False

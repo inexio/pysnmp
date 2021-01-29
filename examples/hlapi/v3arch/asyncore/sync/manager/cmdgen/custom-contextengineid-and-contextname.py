@@ -6,7 +6,7 @@ Send SNMP SET request using the following options:
 
 * with SNMPv3 with user 'usr-md5-none', MD5 auth and no privacy protocols
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * addressing particular set of Managed Objects at remote SNMP Engine by:
   * contextEngineId 0x80004fb805636c6f75644dab22cc and
   * contextName 'a172334d7d97871b72241397f713fa12'
@@ -14,7 +14,7 @@ Send SNMP SET request using the following options:
 
 Functionally similar to:
 
-| $ snmpset -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 -E 80004fb805636c6f75644dab22cc -n a172334d7d97871b72241397f713fa12 demo.snmplabs.com SNMPv2-MIB::sysORDescr.1 = "new system name"
+| $ snmpset -v3 -u usr-md5-des -l authPriv -A authkey1 -X privkey1 -E 80004fb805636c6f75644dab22cc -n a172334d7d97871b72241397f713fa12 demo-snmp.thola.io SNMPv2-MIB::sysORDescr.1 = "new system name"
 
 """#
 from pysnmp.hlapi import *
@@ -22,7 +22,7 @@ from pysnmp.hlapi import *
 iterator = setCmd(
     SnmpEngine(),
     UsmUserData('usr-md5-none', 'authkey1'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(
         contextEngineId=OctetString(hexValue='80004fb805636c6f75644dab22cc'),
         contextName='da761cfc8c94d3aceef4f60f049105ba'

@@ -6,7 +6,7 @@ Send two SNMP GET requests in a row using the following options:
 
 * with SNMPv2c, community name "public"
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for IF-MIB::ifInOctets.1 and IF-MIB::ifOutOctets.1 MIB objects
 * with MIB lookup enabled
 
@@ -17,7 +17,7 @@ could consume input
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com IF-MIB::ifInOctets.1
+| $ snmpget -v2c -c public demo-snmp.thola.io IF-MIB::ifInOctets.1
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -30,7 +30,7 @@ queue = [
 iterator = getCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     lookupMib=True
 )
 

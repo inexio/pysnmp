@@ -6,13 +6,13 @@ Send SNMP GET request using the following options:
 
   * with SNMPv1, community 'public'
   * over IPv4/UDP
-  * to an Agent at demo.snmplabs.com:161
+  * to an Agent at demo-snmp.thola.io:161
   * for an instance of SNMPv2-MIB::sysDescr.0 MIB object
   * Based on trollius I/O framework
 
 Functionally similar to:
 
-| $ snmpget -v1 -c public demo.snmplabs.com SNMPv2-MIB::sysDescr.0
+| $ snmpget -v1 -c public demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
 
 """#
 import trollius
@@ -27,7 +27,7 @@ def run():
     iterator = getCmd(
         snmpEngine,
         CommunityData('public', mpModel=0),
-        UdpTransportTarget(('demo.snmplabs.com', 161)),
+        UdpTransportTarget(('demo-snmp.thola.io', 161)),
         ContextData(),
         ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0))
     )

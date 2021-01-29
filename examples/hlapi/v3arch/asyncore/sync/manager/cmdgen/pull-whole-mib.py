@@ -6,12 +6,12 @@ Send a series of SNMP GETNEXT requests using the following options:
 
 * with SNMPv3, user 'usr-md5-none', MD5 authentication, no privacy
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for all OIDs in IF-MIB
 
 Functionally similar to:
 
-| $ snmpwalk -v3 -lauthPriv -u usr-md5-none -A authkey1 -X privkey1 demo.snmplabs.com  IF-MIB::
+| $ snmpwalk -v3 -lauthPriv -u usr-md5-none -A authkey1 -X privkey1 demo-snmp.thola.io  IF-MIB::
 
 """#
 from pysnmp.hlapi import *
@@ -19,7 +19,7 @@ from pysnmp.hlapi import *
 iterator = nextCmd(
     SnmpEngine(),
     UsmUserData('usr-md5-none', 'authkey1'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('IF-MIB'))
 )

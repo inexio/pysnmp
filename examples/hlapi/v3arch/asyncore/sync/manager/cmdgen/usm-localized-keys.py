@@ -8,7 +8,7 @@ Send SNMP GET request using the following options:
 * use localized auth and privacy keys instead of pass-phrase or master keys
 * configure authoritative SNMP engine ID (0x0000000000 can be used as well)
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for SNMPv2-MIB::sysDescr.0 MIB object instance
 
 Functionally similar to:
@@ -18,7 +18,7 @@ Functionally similar to:
       -e 0x80004fb805636c6f75644dab22cc \
       -3k 0x6b99c475259ef7976cf8d028a3381eeb \
       -3K 0x92b5ef98f0a216885e73944e58c07345 \
-      demo.snmplabs.com SNMPv2-MIB::sysDescr.0
+      demo-snmp.thola.io SNMPv2-MIB::sysDescr.0
 
 """#
 from pysnmp.hlapi import *
@@ -35,7 +35,7 @@ iterator = getCmd(
         privKeyType=usmKeyTypeLocalized,
         securityEngineId=OctetString(
             hexValue='80004fb805636c6f75644dab22cc')),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ContextData(),
     ObjectType(ObjectIdentity('SNMPv2-MIB', 'sysDescr', 0))
 )

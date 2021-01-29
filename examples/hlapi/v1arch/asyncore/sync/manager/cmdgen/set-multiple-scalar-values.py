@@ -6,7 +6,7 @@ Send SNMP SET request using the following options:
 
 * with SNMPv1, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * with MIB lookup enabled
 * setting three var-bindings to new values
 
@@ -16,7 +16,7 @@ inferred from passed objects.
 
 Functionally similar to:
 
-| $ snmpset -v1 -c public demo.snmplabs.com 1.3.6.1.2.1.1.9.1.2.1 o 1.3.6.1.4.1.20408.1.1 1.3.6.1.2.1.1.9.1.2.1 = 1.3.6.1.4.1.20408.1.1 1.3.6.1.2.1.1.9.1.3.1 s "new system name"
+| $ snmpset -v1 -c public demo-snmp.thola.io 1.3.6.1.2.1.1.9.1.2.1 o 1.3.6.1.4.1.20408.1.1 1.3.6.1.2.1.1.9.1.2.1 = 1.3.6.1.4.1.20408.1.1 1.3.6.1.2.1.1.9.1.3.1 s "new system name"
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -24,7 +24,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = setCmd(
     SnmpDispatcher(),
     CommunityData('public', mpModel=0),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ObjectType(
         ObjectIdentity('SNMPv2-MIB', 'sysORID', 1),
         ObjectIdentifier('1.3.6.1.4.1.20408.1.1')

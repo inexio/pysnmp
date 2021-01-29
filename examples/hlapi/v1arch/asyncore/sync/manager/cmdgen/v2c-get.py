@@ -6,12 +6,12 @@ Send SNMP GET request using the following options:
 
 * with SNMPv2c, community 'public'
 * over IPv4/UDP
-* to an Agent at demo.snmplabs.com:161
+* to an Agent at demo-snmp.thola.io:161
 * for two var-bindings with  OIDs in string form 
 
 Functionally similar to:
 
-| $ snmpget -v2c -c public demo.snmplabs.com 1.3.6.1.2.1.1.1.0 1.3.6.1.2.1.1.6.0
+| $ snmpget -v2c -c public demo-snmp.thola.io 1.3.6.1.2.1.1.1.0 1.3.6.1.2.1.1.6.0
 
 """#
 from pysnmp.hlapi.v1arch import *
@@ -19,7 +19,7 @@ from pysnmp.hlapi.v1arch import *
 iterator = getCmd(
     SnmpDispatcher(),
     CommunityData('public'),
-    UdpTransportTarget(('demo.snmplabs.com', 161)),
+    UdpTransportTarget(('demo-snmp.thola.io', 161)),
     ('1.3.6.1.2.1.1.1.0', None),
     ('1.3.6.1.2.1.1.6.0', None)
 )
